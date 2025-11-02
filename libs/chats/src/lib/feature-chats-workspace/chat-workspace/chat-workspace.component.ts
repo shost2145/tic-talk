@@ -1,10 +1,9 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap, tap } from 'rxjs';
-import { MessageInputComponent } from '../../ui/message-input/message-input.component';
+import { switchMap} from 'rxjs';
 import { ChatsService } from '../../../../../data_acess/src/lib/data_acess/chats/services/chats.sertvice';
-import { ProfileService } from '../../../../../data_acess/src/lib/data_acess/profile/services/profile.service';
+import { ProfileService } from '../../../../../data_acess/src/lib/data_acess';
 import { ChatWorkspaceMessagesWrapperComponent } from './chat-workspace-messages-wrapper/chat-workspace-messages-wrapper.component';
 import {ChatWorkspaceHeaderComponent} from "./chat-workspace-header/chat-workspace-header.component";
 
@@ -14,7 +13,6 @@ import {ChatWorkspaceHeaderComponent} from "./chat-workspace-header/chat-workspa
   imports: [
     ChatWorkspaceHeaderComponent,
     ChatWorkspaceMessagesWrapperComponent,
-    MessageInputComponent,
     AsyncPipe,
   ],
   templateUrl: './chat-workspace.component.html',

@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ProfileCardComponent } from '../../ui';
 import { ProfileFiltersComponent } from '../profile-filters/profile-filters.component';
@@ -8,7 +7,7 @@ import {selectFilteredProfiles} from "../../data/store";
 @Component({
   selector: 'app-search-page',
   standalone: true,
-  imports: [ProfileCardComponent, ProfileFiltersComponent, AsyncPipe],
+  imports: [ProfileCardComponent, ProfileFiltersComponent],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.scss',
 })

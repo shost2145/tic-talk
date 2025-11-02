@@ -3,12 +3,12 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { firstValueFrom, switchMap } from 'rxjs';
-import { ProfileHeaderComponent } from '../../ui/profile-header/profile-header.component';
+import { ProfileHeaderComponent } from '../../ui';
 import { SvgIconComponent } from '../../../../../common-ui/src/lib/common-ui/components/svg-icon/svg-icon.component';
 import { ChatsService } from '../../../../../data_acess/src/lib/data_acess/chats/services/chats.sertvice';
-import { ProfileService } from '../../../../../data_acess/src/lib/data_acess/profile/services/profile.service';
-import { ImgUrlPipe } from '../../../../../common-ui/src/lib/common-ui/pipes/img-url.pipe';
-import { PostFeedComponent } from '../../../../../posts/src/lib/feature-posts-wall/post-feed/post-feed.component';
+import { ProfileService } from '../../../../../data_acess/src/lib/data_acess';
+import { ImgUrlPipe } from '../../../../../common-ui/src';
+import { PostFeedComponent } from '../../../../../posts/src';
 
 @Component({
   selector: 'app-profile-page',
@@ -18,7 +18,6 @@ import { PostFeedComponent } from '../../../../../posts/src/lib/feature-posts-wa
     AsyncPipe,
     SvgIconComponent,
     RouterLink,
-    NgForOf,
     ImgUrlPipe,
     PostFeedComponent,
   ],
