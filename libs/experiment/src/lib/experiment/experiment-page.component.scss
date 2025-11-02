@@ -1,0 +1,87 @@
+.form {
+  display: grid;
+  max-width: 1000px;
+  align-content: center;
+  justify-content: end;
+}
+
+.wrapper-input {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.wrapper-input2 {
+  display: grid;
+  grid-template-columns: 1fr 250px;
+}
+
+.wrapper-input3 {
+  display: grid;
+  grid-template-columns: 500px 400px;
+}
+.wrapper-input4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.tt-imput {
+  cursor: text;
+}
+
+.tt-imput.ng-invalid.ng-touched {
+  animation: borderChange 3s linear infinite;
+
+  @keyframes borderChange {
+    0%,
+    32% {
+      border-color: red;
+    }
+    33%,
+    66% {
+      border-color: rgb(0, 0, 0);
+    }
+    67%,
+    100% {
+      border-color: red;
+    }
+  }
+}
+.validation {
+  display: none;
+}
+
+.tt-imput.ng-invalid.ng-touched + .validation {
+  display: block;
+}
+
+.tt-imput2 {
+  width: 100%;
+  margin-top: 8px;
+  display: block;
+  text-align: center;
+  border: 1px solid var(--light-color);
+  border-radius: 4px;
+  padding: 12px 20px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 21px;
+  font-family: 'JetBrains Mono', sans-serif;
+  background: black;
+  color: var(--light-color);
+}
+
+.wrapper-btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.btn2 {
+  width: 200px;
+  height: 40px;
+  margin-bottom: 15px;
+  border: #ae7aff solid 1px;
+  background: #ae7aff;
+}
+.option {
+  color: #5f646d;
+}

@@ -1,0 +1,161 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="form">
+  <label class="tt-control-label mb16">
+    Выбор мастера
+    <select formControlName="type" class="tt-imput">
+      <option [value]="ReceiverTypes.MASSAGE">Массажист</option>
+      <option [value]="ReceiverTypes.BEAUTY_MASTER">Бьюти-мастер</option>
+    </select>
+  </label>
+
+  <div class="wrapper-input">
+    <label class="tt-control-label mb16">
+      Имя
+      <input formControlName="name" class="tt-imput" placeholder="Введите имя" />
+      <small class="validation"> Это поле обязательно!</small>
+    </label>
+
+    <label class="tt-control-label mb16">
+      Фамилия
+      <input formControlName="lastName" class="tt-imput" placeholder="Введите фамилию" />
+      <small class="validation"> Это поле обязательно!</small>
+    </label>
+
+    <label class="tt-control-label mb16">
+      Номер телефона
+      <input
+        [maskito]="phoneOptions"
+        formControlName="phone"
+        class="tt-imput"
+        placeholder="Введите номер"
+      />
+      <small class="validation"> Это поле обязательно!</small>
+    </label>
+  </div>
+
+  @if (form.controls.type.value===ReceiverTypes.MASSAGE){
+  <label class="tt-control-label mb16">
+    Анамнез
+    <textarea
+      formControlName="anamnez"
+      class="tt-imput"
+      placeholder="Укажите диагноз и рекомендации врвача"
+    ></textarea></label
+  >} @if (form.controls.type.value===ReceiverTypes.MASSAGE){
+  <div class="wrapper-input2">
+    <label class="tt-control-label mb16">
+      Вид массажа
+      <select id="tm" formControlName="typeMassage" class="tt-imput">
+        <option class="option" value="" disabled selected hidden="">
+          выберите интересующую услугу
+        </option>
+        <option value="ms">массаж спины</option>
+        <option value="omt">общий массаж тела</option>
+        <option value="lm">лимфодренажный массаж</option>
+        <option value="am">антицеллюлитный массаж</option>
+      </select>
+    </label>
+
+    <label class="tt-control-label mb16">
+      Продолжительность услуги
+      <select id="duration" formControlName="durationOfService" class="tt-imput2">
+        <option *ngFor="let option of filteredDurations" [value]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+    </label>
+  </div>
+  } @else {
+  <div class="wrapper-input2">
+    <label class="tt-control-label mb16">
+      Выбор услуги
+      <select formControlName="typeMassage" class="tt-imput">
+        <option>Коррекция бровей</option>
+        <option>Наращивание ресниц</option>
+        <option>Окрашивание бровей</option>
+        <option>общая услуга</option>
+        <option>Усы как у таракана! Побрейте меня!</option>
+      </select>
+    </label>
+  </div>
+  }
+
+  <div class="wrapper-input2">
+    <label class="tt-control-label mb16" for="date-input">
+      Дата
+      <input
+        [maskito]="dateOptions"
+        id="date-input"
+        type="text"
+        class="tt-imput"
+        placeholder="ДД/ММ/ГГГГ"
+        formControlName="date"
+      />
+      <small class="validation"> Это поле обязательно!</small>
+    </label>
+
+    <label class="tt-control-label mb16">
+      Время
+      <input formControlName="time" class="tt-imput" placeholder="" />
+    </label>
+  </div>
+
+  @if (form.controls.type.value===ReceiverTypes.MASSAGE){
+  <div class="wrapper-input3">
+    <label class="tt-control-label mb16">
+      Выбор атмосферы(музыка)
+      <select formControlName="atmosphere" class="tt-imput">
+        <option>выберите музыку на время сеанса</option>
+        <option>шум моря</option>
+        <option>горение костра</option>
+        <option>шум дождя</option>
+        <option>дикая чаща леса</option>
+        <option>Хочу экзотики! Джунгли!</option>
+      </select>
+    </label>
+
+    <label class="tt-control-label mb16">
+      Выбор масла
+      <select formControlName="oil" class="tt-imput">
+        <option>выберите массажное масло</option>
+        <option>Виноградная косточка</option>
+        <option>Смесь масел</option>
+        <option>Абрикосовая косточка</option>
+        <option>Как в СССР на тальке!</option>
+      </select>
+    </label>
+  </div>
+  } @if (form.controls.type.value===ReceiverTypes.BEAUTY_MASTER){ @for (group of
+  form.controls.addresses.controls; track group; let i = $index){
+
+  <div class="wrapper-btn">
+    <button class="btn2" type="reset" (click)="deliteAddress(i)">Удалить адрес</button>
+    <button class="btn2" type="submit" (click)="addAddresses()">Добавить адрес</button>
+  </div>
+
+  <h4>Адрес доставки(фирменная косметика на дом)</h4>
+  <div class="wrapper-input4" [formGroup]="group">
+    <label class="tt-control-label mb16">
+      <input formControlName="city" class="tt-imput" placeholder="Город" />
+    </label>
+
+    <label class="tt-control-label mb16">
+      <input formControlName="street" class="tt-imput" placeholder="Улица" />
+    </label>
+
+    <label class="tt-control-label mb16">
+      <input formControlName="house" class="tt-imput" placeholder="Дом" />
+    </label>
+
+    <label class="tt-control-label mb16">
+      <input formControlName="apartment" class="tt-imput" placeholder="Квартира" />
+    </label>
+  </div>
+  } }
+
+  <div class="wrapper-btn">
+    <button class="btn btn-shadow mt20" type="reset">отмена</button>
+    <button class="btn btn-shadow mt20" type="submit">готово!</button>
+  </div>
+
+  
+</form>
