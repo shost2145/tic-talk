@@ -1,0 +1,21 @@
+{
+  "name": "chats",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "chats/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "chats/jest.config.ts",
+        "tsConfig": "chats/tsconfig.spec.json"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
