@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { dateOptions, phoneOptions } from '../experements/mask';
 import { MaskitoOptions } from '@maskito/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NgForOf } from '@angular/common';
@@ -22,7 +21,7 @@ function arrayForm() {
 @Component({
   selector: 'app-experiment-page',
   standalone: true,
-  imports: [MaskitoDirective, ReactiveFormsModule, NgForOf],
+  imports: [ReactiveFormsModule, NgForOf],                //MaskitoDirective,
   templateUrl: './experiment-page.component.html',
   styleUrls: ['./experiment-page.component.scss'],
 })
@@ -45,8 +44,8 @@ export class ExperimentPageComponent {
     addresses: new FormArray([arrayForm()]),
   });
 
-  protected readonly dateOptions = dateOptions;
-  protected readonly phoneOptions = phoneOptions;
+  //protected readonly dateOptions = dateOptions;
+  //protected readonly phoneOptions = phoneOptions;
   protected readonly SubmitEvent = SubmitEvent;
   protected readonly event = event;
   protected readonly ReceiverTypes = ReceiverTypes;

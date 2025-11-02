@@ -9,6 +9,7 @@ import { SettingsPageComponent } from '../../../../libs/profile/src';
 import {provideState} from "@ngrx/store";
 import {provideEffects} from "@ngrx/effects";
 import {ProfileEffects, proleFeature} from "../../../../libs/profile/src";
+import {ExperimentPageComponent} from "../../../../libs/experiment/src/lib/experiment/experiment-page.component";
 
 export const routes: Routes = [
   {
@@ -18,6 +19,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'profile/me', pathMatch: 'full' },
       { path: 'profile/:id', component: ProfilePageComponent },
       { path: 'settings', component: SettingsPageComponent },
+      { path: 'experiments', component: ExperimentPageComponent },
       { path: 'search',
         component: SearchPageComponent,
       providers:[
