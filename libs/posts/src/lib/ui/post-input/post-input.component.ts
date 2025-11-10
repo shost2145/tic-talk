@@ -13,7 +13,9 @@ import { firstValueFrom } from 'rxjs';
 import { AvatarCircleComponent } from '../../../../../common-ui/src/lib/common-ui/components/avatar-circle/avatar-circle.component';
 import { SvgIconComponent } from '../../../../../common-ui/src/lib/common-ui/components/svg-icon/svg-icon.component';
 import { PostService } from '../../../../../data_acess/src/lib/data_acess/posts/services/post.service';
-import { ProfileService } from '../../../../../data_acess/src/lib/data_acess/profile/services/profile.service';
+import { ProfileService } from '../../../../../data_acess/src/lib/data_acess';
+import {Store} from "@ngrx/store";
+
 
 @Component({
   selector: 'app-post-input',
@@ -26,9 +28,11 @@ export class PostInputComponent {
   r2 = inject(Renderer2);
   postService = inject(PostService);
 
+
   isCommentInput = input(false);
   postId = input<number>(0);
   profile = inject(ProfileService).me;
+  store = inject(Store);
 
   @Output() created = new EventEmitter();
 
@@ -63,7 +67,7 @@ export class PostInputComponent {
       return;
     }
 
-    firstValueFrom(
+     firstValueFrom(
       this.postService.createPost({
         title: 'Клевый пост',
         content: this.postText,
@@ -72,5 +76,15 @@ export class PostInputComponent {
     ).then(() => {
       this.postText = '';
     });
+
+
+
+
+
+
+
   }
 }
+
+
+

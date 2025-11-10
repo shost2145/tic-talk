@@ -10,6 +10,7 @@ import {provideState} from "@ngrx/store";
 import {provideEffects} from "@ngrx/effects";
 import {ProfileEffects, proleFeature} from "../../../../libs/profile/src";
 import {ExperimentPageComponent} from "../../../../libs/experiment/src/lib/experiment/experiment-page.component";
+import {PostEffect, postFeature} from "../../../../libs/posts/src/lib/data/store";
 
 export const routes: Routes = [
   {
@@ -17,7 +18,11 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', redirectTo: 'profile/me', pathMatch: 'full' },
-      { path: 'profile/:id', component: ProfilePageComponent },
+      { path: 'profile/:id', component: ProfilePageComponent,
+        providers:[
+          provideState(postFeature),
+          provideEffects(PostEffect)]
+      },
       { path: 'settings', component: SettingsPageComponent },
       { path: 'experiments', component: ExperimentPageComponent },
       { path: 'search',

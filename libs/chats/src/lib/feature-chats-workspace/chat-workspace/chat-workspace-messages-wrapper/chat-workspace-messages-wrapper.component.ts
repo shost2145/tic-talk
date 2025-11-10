@@ -1,7 +1,7 @@
-import { Component, effect, inject, input, signal } from '@angular/core';
+import { Component, inject, input} from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { MessageInputComponent } from '../../../ui/message-input/message-input.component';
-import { Chat, Message } from '../../../../../../data_acess/src/lib/data_acess/chats/interface/chats.interface';
+import { Chat} from '../../../../../../data_acess/src/lib/data_acess/chats/interface/chats.interface';
 import { ChatsService } from '../../../../../../data_acess/src/lib/data_acess/chats/services/chats.sertvice';
 import { ChatWorkspaceMessageComponent } from './chat-workspace-message/chat-workspace-message.component';
 
@@ -20,9 +20,17 @@ export class ChatWorkspaceMessagesWrapperComponent {
   messages = this.chatsService.activeChatMessages;
 
   async onSendMessage(messageText: string) {
-    await firstValueFrom(
-      this.chatsService.sendMessage(this.chat().id, messageText)
-    );
+
+    // await firstValueFrom(
+    //   this.chatsService.sendMessage(this.chat().id, messageText)
+    // );
+
+
+
+  this.chatsService.wsAdapter.sendMessage(
+    messageText,
+    this.chat().id
+  )
 
     await firstValueFrom(this.chatsService.getChatById(this.chat().id));
   }

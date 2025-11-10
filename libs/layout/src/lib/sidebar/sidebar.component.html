@@ -8,8 +8,16 @@
         [routerLink]="[menuItem.link]"
         routerLinkActive="active"
       >
+
         <svg [icon]="menuItem.icon"></svg>
         <span>{{ menuItem.label }}</span>
+        @if (menuItem.icon === 'chats'){
+        <div class="active_chats">
+          <svg icon = 'chats'></svg>
+          {{unreadMessages()}}
+        </div>
+
+        }
       </a>
     </li>
   </ul>

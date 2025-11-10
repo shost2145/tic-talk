@@ -1,1 +1,1 @@
-export * from './lib/feature-chats-workspace/chats.component';
+

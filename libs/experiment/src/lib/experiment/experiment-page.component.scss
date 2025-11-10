@@ -24,11 +24,11 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.tt-imput {
+.tt-input {
   cursor: text;
 }
 
-.tt-imput.ng-invalid.ng-touched {
+.tt-input.ng-invalid.ng-touched {
   animation: borderChange 3s linear infinite;
 
   @keyframes borderChange {
@@ -50,7 +50,7 @@
   display: none;
 }
 
-.tt-imput.ng-invalid.ng-touched + .validation {
+.tt-input.ng-invalid.ng-touched + .validation {
   display: block;
 }
 

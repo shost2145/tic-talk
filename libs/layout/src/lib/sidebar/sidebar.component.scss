@@ -93,3 +93,13 @@
     color: var(--primary-color);
   }
 }
+.active_chats{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background:none;
+  width: 12px;
+  height: 12px;
+  margin-right: 20px;
+}
+
+

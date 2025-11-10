@@ -7,6 +7,7 @@ import {
   PostComment,
   PostCreateDto,
 } from '../interface/post.interface';
+import {Store} from "@ngrx/store";
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ export class PostService {
   baseApiUrl = 'https://icherniakov.ru/yt-course/';
 
   posts = signal<Post[]>([]);
+  store = inject(Store)
 
   createPost(payload: PostCreateDto) {
     return this.#http.post<Post>(`${this.baseApiUrl}post/`, payload).pipe(
@@ -29,7 +31,7 @@ export class PostService {
   fetchPosts() {
     return this.#http
       .get<Post[]>(`${this.baseApiUrl}post/`)
-      .pipe(tap((res) => this.posts.set(res)));
+      .pipe(tap(posts => this.posts.set(posts)));
   }
 
   createComment(payload: CommentCreateDto) {
@@ -41,4 +43,20 @@ export class PostService {
       .get<Post>(`${this.baseApiUrl}post/${postId}`)
       .pipe(map((res) => res.comments));
   }
+
+  // getCommentsByPostId(postId: number) {
+  //   return this.#http
+  //     .get<Post>(`${this.baseApiUrl}post/${postId}`)
+  //     .pipe(
+  //       map((res) => {
+  //         this.store.dispatch(postActions.setComments({ postId, comments: res.comments }));
+  //         return res.comments;
+  //       })
+  //     );
+  // }
+
+
+
+
+
 }

@@ -1,4 +1,4 @@
-import { Profile } from '../../profile/interface/profile.interface';
+import { Profile } from '../../profile/interface';
 
 export interface Chat {
   id: number;
@@ -15,13 +15,13 @@ export interface Message {
   text: string;
   createdAt: string;
   isRead: boolean;
-  updatedAt: string;
+  updatedAt?: string;
   user?: Profile;
-  isMine?: boolean;
+  isMine?: boolean | undefined;
 }
 
 export interface LastMessageRes {
   id: number;
   userFrom: Profile;
-  message: string | null;
+  message: string;
 }

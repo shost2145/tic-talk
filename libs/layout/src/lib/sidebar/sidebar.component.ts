@@ -6,6 +6,7 @@ import { ProfileService } from '../../../../data_acess/src/lib/data_acess';
 import { ImgUrlPipe } from '../../../../common-ui/src';
 import { SvgIconComponent } from '../../../../common-ui/src/lib/common-ui/components/svg-icon/svg-icon.component';
 import { SubscriberCardComponent } from './subscriber-card/subscriber-card.component';
+import {ChatsService} from "../../../../data_acess/src/lib/data_acess/chats/services/chats.sertvice";
 
 @Component({
   selector: 'app-sidebar',
@@ -27,6 +28,8 @@ export class SidebarComponent {
   subcribers$ = this.profileService.getSubscribersShortList();
 
   me = this.profileService.me;
+  chatsService = inject(ChatsService);
+  unreadMessages = this.chatsService.unreadMessages;
 
   menuItems = [
     {

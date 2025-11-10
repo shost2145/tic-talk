@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MaskitoOptions } from '@maskito/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NgForOf } from '@angular/common';
 
@@ -21,13 +20,13 @@ function arrayForm() {
 @Component({
   selector: 'app-experiment-page',
   standalone: true,
-  imports: [ReactiveFormsModule, NgForOf],                //MaskitoDirective,
+  imports: [ReactiveFormsModule, NgForOf],
   templateUrl: './experiment-page.component.html',
   styleUrls: ['./experiment-page.component.scss'],
 })
 export class ExperimentPageComponent {
-  dateInput: Required<MaskitoOptions>;
-  phoneInput: Required<MaskitoOptions>;
+ // dateInput: Required<MaskitoOptions>;
+ // phoneInput: Required<MaskitoOptions>;
 
   form = new FormGroup({
     type: new FormControl<ReceiverTypes>(ReceiverTypes.MASSAGE),
@@ -60,8 +59,8 @@ export class ExperimentPageComponent {
 
   constructor() {
     //Наложение маски на input
-    this.dateInput = dateOptions;
-    this.phoneInput = phoneOptions;
+    //this.dateInput = dateOptions;
+   // this.phoneInput = phoneOptions;
 
     this.form.controls.typeMassage.valueChanges.pipe(takeUntilDestroyed()).subscribe((val) => {
       console.log('Тип массажа:', val); // для отладки
