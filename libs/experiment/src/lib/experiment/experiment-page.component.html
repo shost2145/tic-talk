@@ -26,8 +26,9 @@
         formControlName="phone"
         class="tt-input"
         placeholder="Введите номер"
+        [maskito]="phoneOptions"
       />
-      <small class="validation"> Это поле обязательно!</small>
+      <small class="validation"> Укажите номер полностью!</small>
     </label>
   </div>
 
@@ -35,6 +36,7 @@
   <label class="tt-control-label mb16">
     Анамнез
     <textarea
+      (input)="onTextAreaInput($event)"
       formControlName="anamnez"
       class="tt-input"
       placeholder="Укажите диагноз и рекомендации врача"
@@ -44,9 +46,7 @@
     <label class="tt-control-label mb16">
       Вид массажа
       <select id="tm" formControlName="typeMassage" class="tt-input">
-        <option class="option" value="" disabled selected hidden="">
-          выберите интересующую услугу
-        </option>
+        <option value="" disabled selected hidden>выберите интересующую услугу</option>
         <option value="ms">массаж спины</option>
         <option value="omt">общий массаж тела</option>
         <option value="lm">лимфодренажный массаж</option>
@@ -57,6 +57,8 @@
     <label class="tt-control-label mb16">
       Продолжительность услуги
       <select id="duration" formControlName="durationOfService" class="tt-imput2">
+        <option value=""  disabled selected>выбор времени
+         </option>
         <option *ngFor="let option of filteredDurations" [value]="option.value">
           {{ option.label }}
         </option>
@@ -68,6 +70,7 @@
     <label class="tt-control-label mb16">
       Выбор услуги
       <select formControlName="typeMassage" class="tt-input">
+        <option style="color: grey !important;" value="" disabled selected hidden="">поберите интересующую услугу</option>
         <option>Коррекция бровей</option>
         <option>Наращивание ресниц</option>
         <option>Окрашивание бровей</option>
@@ -82,19 +85,24 @@
     <label class="tt-control-label mb16" for="date-input">
       Дата
       <input
-        id="date-input"
-        type="text"
+        type="date" [min]="today"
         class="tt-input"
         placeholder="ДД/ММ/ГГГГ"
         formControlName="date"
-      />
+        (keydown)="disableInput($event)"
+        (paste)="disableInput($event)"
+      />                                          <!--блокируем ввод -->
+      <div class="date"></div>
       <small class="validation"> Это поле обязательно!</small>
     </label>
 
     <label class="tt-control-label mb16">
       Время
-      <input formControlName="time" class="tt-input" placeholder="" />
+      <input id="durationTime"
+        type="text" formControlName="time" class="tt-input" placeholder="чч:мм" />
+      <small> Для выбора времени используй &#8593; &#8595;  </small>
     </label>
+
   </div>
 
   @if (form.controls.type.value===ReceiverTypes.MASSAGE){
@@ -102,7 +110,9 @@
     <label class="tt-control-label mb16">
       Выбор атмосферы(музыка)
       <select formControlName="atmosphere" class="tt-input">
-        <option>выберите музыку на время сеанса</option>
+        <option class="option" value="" disabled selected hidden="">
+          подбор атмосферы
+        </option>
         <option>шум моря</option>
         <option>горение костра</option>
         <option>шум дождя</option>
@@ -114,7 +124,8 @@
     <label class="tt-control-label mb16">
       Выбор масла
       <select formControlName="oil" class="tt-input">
-        <option>выберите массажное масло</option>
+        <option class="option" value="" disabled selected hidden="">
+          выберите тип масла</option>
         <option>Виноградная косточка</option>
         <option>Смесь масел</option>
         <option>Абрикосовая косточка</option>
@@ -126,34 +137,64 @@
   form.controls.addresses.controls; track group; let i = $index){
 
   <div class="wrapper-btn">
-    <button class="btn2" type="reset" (click)="deliteAddress(i)">Удалить адрес</button>
+    @if ($index!==0){
+    <button class="btn2" type="button" id="btnON" (click)="deleteAddress(i)">Удалить адрес</button>}
     <button class="btn2" type="submit" (click)="addAddresses()">Добавить адрес</button>
   </div>
 
   <h4>Адрес доставки(фирменная косметика на дом)</h4>
   <div class="wrapper-input4" [formGroup]="group">
+
+
     <label class="tt-control-label mb16">
-      <input formControlName="city" class="tt-input" placeholder="Город" />
+      <input formControlName="city" class="tt-input"  placeholder="Город" />
+      @if (suggestions$ | async; as suggestions){
+        @if (isDropdownOpened()){
+          <div class="suggestion-dropdown">
+            @for (suggest of suggestions; track suggest){
+              <button class="suggest-btn"
+                      (click)="onSuggestionPick(suggest, i)"
+              >{{suggest.data.city}} {{suggest.data.street}}</button>
+            }
+          </div>}}
     </label>
 
     <label class="tt-control-label mb16">
-      <input formControlName="street" class="tt-input" placeholder="Улица" />
+      <input formControlName="street" id="street" class="tt-input" placeholder="улица" />
+    </label>
+
+
+    <label class="tt-control-label mb16">
+      <input formControlName="house" id="house" class="tt-input" placeholder="Дом" />
     </label>
 
     <label class="tt-control-label mb16">
-      <input formControlName="house" class="tt-input" placeholder="Дом" />
+      <input formControlName="apartment" id="apartment" class="tt-input" placeholder="Квартира" />
     </label>
 
-    <label class="tt-control-label mb16">
-      <input formControlName="apartment" class="tt-input" placeholder="Квартира" />
-    </label>
   </div>
   } }
 
+
+  @if (form.controls.type.value===ReceiverTypes.BEAUTY_MASTER){
+  <div class="checkbox">
+    <h4>Дополнительно</h4>
+    <label class="tt-control-label mb16">
+      Дополнительная упаковка
+      <input formControlName="package" type="checkbox">
+      Ускоренная доставка
+      <input formControlName="deliverySpeed" type="checkbox">
+    </label>
+
+
+  </div>}
+
+
+
   <div class="wrapper-btn">
-    <button class="btn btn-shadow mt20" type="reset">отмена</button>
+    <button class="btn btn-shadow mt20" type="button" (click)="cancellation()">отмена</button>
     <button class="btn btn-shadow mt20" type="submit">готово!</button>
   </div>
 
-
 </form>
+

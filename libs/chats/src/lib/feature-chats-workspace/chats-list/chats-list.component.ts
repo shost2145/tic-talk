@@ -1,10 +1,10 @@
-import { AsyncPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { catchError, map, startWith, switchMap } from 'rxjs';
-import { ChatsService } from '../../../../../data_acess/src/lib/data_acess/chats/services/chats.sertvice';
-import { ChatsBtnComponent } from '../chats-btn/chats-btn.component';
+import {AsyncPipe} from '@angular/common';
+import {ChangeDetectionStrategy, Component, ElementRef, inject, Renderer2} from '@angular/core';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RouterLink, RouterLinkActive} from '@angular/router';
+import {map, startWith, switchMap} from 'rxjs';
+import {ChatsService} from '../../data/chats.sertvice';
+import {ChatsBtnComponent} from '../chats-btn/chats-btn.component';
 
 @Component({
   selector: 'app-chats-list',
@@ -19,9 +19,13 @@ import { ChatsBtnComponent } from '../chats-btn/chats-btn.component';
   ],
   templateUrl: './chats-list.component.html',
   styleUrl: './chats-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChatsListComponent {
   chatsService = inject(ChatsService);
+  r2 = inject(Renderer2);
+  hostElement = inject(ElementRef);
+
 
   filterChatsControl = new FormControl('');
 
@@ -39,4 +43,5 @@ export class ChatsListComponent {
       );
     })
   );
+
 }

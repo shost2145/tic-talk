@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import {NgIf} from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -8,12 +8,14 @@ import {
   Output,
   Renderer2,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { firstValueFrom } from 'rxjs';
-import { AvatarCircleComponent } from '../../../../../common-ui/src/lib/common-ui/components/avatar-circle/avatar-circle.component';
-import { SvgIconComponent } from '../../../../../common-ui/src/lib/common-ui/components/svg-icon/svg-icon.component';
-import { PostService } from '../../../../../data_acess/src/lib/data_acess/posts/services/post.service';
-import { ProfileService } from '../../../../../data_acess/src/lib/data_acess';
+import {FormsModule} from '@angular/forms';
+import {firstValueFrom} from 'rxjs';
+import {
+  AvatarCircleComponent
+} from '../../../../../common-ui/src';
+import {SvgIconComponent} from '../../../../../common-ui/src/lib/common-ui/components/svg-icon/svg-icon.component';
+import {PostService} from '../../../../../data_acess/src/lib/data_acess/posts/services/post.service';
+import {ProfileService} from '../../../../../data_acess/src/lib/data_acess';
 import {Store} from "@ngrx/store";
 
 
@@ -67,7 +69,7 @@ export class PostInputComponent {
       return;
     }
 
-     firstValueFrom(
+    firstValueFrom(
       this.postService.createPost({
         title: 'Клевый пост',
         content: this.postText,
@@ -76,11 +78,6 @@ export class PostInputComponent {
     ).then(() => {
       this.postText = '';
     });
-
-
-
-
-
 
 
   }

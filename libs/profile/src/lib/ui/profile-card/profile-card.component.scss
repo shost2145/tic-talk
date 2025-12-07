@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr) 250px 1fr;
   grid-gap: 32px;
+
 }
 
 .profile-card__description {
@@ -36,3 +37,16 @@
   gap: 4px;
   height: min-content;
 }
+
+.profile-card__action-btns {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 6px;
+}
+
+
+
+
+
+
+

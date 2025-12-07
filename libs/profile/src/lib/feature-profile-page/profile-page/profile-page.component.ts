@@ -1,14 +1,14 @@
-import { AsyncPipe, NgForOf } from '@angular/common';
-import { Component, computed, inject, signal } from '@angular/core';
-import { toObservable } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { firstValueFrom, switchMap } from 'rxjs';
-import { ProfileHeaderComponent } from '../../ui';
-import { SvgIconComponent } from '../../../../../common-ui/src/lib/common-ui/components/svg-icon/svg-icon.component';
-import { ChatsService } from '../../../../../data_acess/src/lib/data_acess/chats/services/chats.sertvice';
-import { ProfileService } from '../../../../../data_acess/src/lib/data_acess';
-import { ImgUrlPipe } from '../../../../../common-ui/src';
-import { PostFeedComponent } from '../../../../../posts/src';
+import {AsyncPipe} from '@angular/common';
+import {ChangeDetectionStrategy, Component, computed, inject, signal} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
+import {firstValueFrom, switchMap} from 'rxjs';
+import {ProfileHeaderComponent} from '../../ui';
+import {SvgIconComponent} from '../../../../../common-ui/src/lib/common-ui/components/svg-icon/svg-icon.component';
+import {ChatsService} from '../../../../../chats/src/lib/data/chats.sertvice';
+import {ProfileService} from '../../../../../data_acess/src/lib/data_acess';
+import {ImgUrlPipe} from '../../../../../common-ui/src';
+import {PostFeedComponent} from '../../../../../posts/src';
 
 @Component({
   selector: 'app-profile-page',
@@ -23,6 +23,7 @@ import { PostFeedComponent } from '../../../../../posts/src';
   ],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfilePageComponent {
   profileService = inject(ProfileService);
@@ -31,12 +32,12 @@ export class ProfilePageComponent {
   router = inject(Router);
 
   me$ = toObservable(this.profileService.me);
-  subcribers$ = this.profileService.getSubscribersShortList(5);
+  subcriber$ = this.profileService.getSubscribersShortList(5);
 
   isMyPage = signal(false);
 
   profile$ = this.route.params.pipe(
-    switchMap(({ id }) => {
+    switchMap(({id}) => {
       this.isMyPage.set(id === 'me' || id === this.profileService.me()?.id);
       if (id === 'me') return this.me$;
 

@@ -1,16 +1,17 @@
 import {
-  Component, computed,
+  ChangeDetectionStrategy,
+  Component,
   ElementRef,
   HostListener,
-  inject,
+  inject, OnInit,
   Renderer2,
 } from '@angular/core';
-import {debounceTime, firstValueFrom, fromEvent} from 'rxjs';
-import { PostService } from '../../../../../data_acess/src/lib/data_acess/posts/services/post.service';
-import { PostInputComponent } from '../../ui/post-input/post-input.component';
-import { PostComponent } from '../post/post.component';
+import {debounceTime, fromEvent} from 'rxjs';
+import {PostService} from '../../../../../data_acess/src/lib/data_acess/posts/services/post.service';
+import {PostInputComponent} from '../../ui/post-input/post-input.component';
+import {PostComponent} from '../post/post.component';
 import {Store} from "@ngrx/store";
-import {Post, ProfileService} from "../../../../../data_acess/src/lib/data_acess";
+import {ProfileService} from "../../../../../data_acess/src/lib/data_acess";
 import {postAction, selectPosts} from "../../data/store";
 
 
@@ -21,17 +22,15 @@ import {postAction, selectPosts} from "../../data/store";
   imports: [PostInputComponent, PostComponent],
   templateUrl: './post-feed.component.html',
   styleUrl: './post-feed.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PostFeedComponent {
+export class PostFeedComponent implements OnInit {
   postService = inject(PostService);
   hostElement = inject(ElementRef);
   r2 = inject(Renderer2);
   store = inject(Store)
-
-    //feed = this.postService.posts;                                      //работает без NGRX
-   feed = this.store.selectSignal(selectPosts)  //работает через NGRX
-
-
+  //feed = this.postService.posts;                                      //работает без NGRX
+  feed = this.store.selectSignal(selectPosts)  //работает через NGRX
 
 
   profile = inject(ProfileService).me;
@@ -42,11 +41,10 @@ export class PostFeedComponent {
   }
 
 
-
-
-  constructor() {
+  ngOnInit() {
     //firstValueFrom(this.postService.fetchPosts());  //работает без NGRX
-   this.store.dispatch(postAction.fetchPosts());//работает через NGRX
+    this.store.dispatch(postAction.fetchPosts());//работает через NGRX
+
   }
 
 

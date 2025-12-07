@@ -1,17 +1,17 @@
-import { NgIf } from '@angular/common';
+import {NgIf} from '@angular/common';
 import {
   Component,
   EventEmitter,
   inject,
-  input,
   Output,
   Renderer2,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Profile } from '../../../../../data_acess/src/lib/data_acess/profile/interface/profile.interface';
-import { ProfileService } from '../../../../../data_acess/src/lib/data_acess/profile/services/profile.service';
-import { AvatarCircleComponent } from '../../../../../common-ui/src/lib/common-ui/components/avatar-circle/avatar-circle.component';
-import { SvgIconComponent } from '../../../../../common-ui/src/lib/common-ui/components/svg-icon/svg-icon.component';
+import {FormsModule} from '@angular/forms';
+import {ProfileService} from '../../../../../data_acess/src/lib/data_acess';
+import {
+  AvatarCircleComponent
+} from '../../../../../common-ui/src';
+import {SvgIconComponent} from '../../../../../common-ui/src/lib/common-ui/components/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'app-message-input',

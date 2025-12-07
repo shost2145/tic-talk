@@ -44,16 +44,7 @@ export class PostService {
       .pipe(map((res) => res.comments));
   }
 
-  // getCommentsByPostId(postId: number) {
-  //   return this.#http
-  //     .get<Post>(`${this.baseApiUrl}post/${postId}`)
-  //     .pipe(
-  //       map((res) => {
-  //         this.store.dispatch(postActions.setComments({ postId, comments: res.comments }));
-  //         return res.comments;
-  //       })
-  //     );
-  // }
+
 
 
 

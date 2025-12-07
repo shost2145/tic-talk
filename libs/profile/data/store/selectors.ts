@@ -1,11 +1,24 @@
 import {createSelector} from '@ngrx/store';
 import {proleFeature} from './reducer';
-import { Profile } from '../../../data_acess/src/lib/data_acess';
-
+import {Profile} from '../../../data_acess/src/lib/data_acess';
 
 
 export const selectFilteredProfiles = createSelector(
   proleFeature.selectProfiles,
   (profiles: Profile[]) => profiles
+)
 
+export const selectProfilePage = createSelector(
+  proleFeature.selectProfileFeatureState,
+  (state) => {
+    return {
+      page: state.page,
+      size: state.size,
+    }
+  }
+)
+
+export const selectProfileFilters = createSelector(
+  proleFeature.selectProfileFilters,
+  (filters) => filters
 )

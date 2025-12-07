@@ -9,7 +9,7 @@ import { Profile } from '../interface';
 })
 export class ProfileService {
   http = inject(HttpClient);
-  baseApiUrl = 'https://icherniakov.ru/yt-course/';
+  baseApiUrl = '/yt-course/';
 
   me = signal<Profile | null>(null);
 

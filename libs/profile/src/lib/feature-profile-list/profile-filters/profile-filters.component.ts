@@ -1,14 +1,14 @@
-import { Component, inject, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {ChangeDetectionStrategy, Component, inject, OnDestroy} from '@angular/core';
+import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import {
   debounceTime,
   startWith,
   Subscription,
-  switchMap,
 } from 'rxjs';
-import { ProfileService } from '../../../../../data_acess/src/lib/data_acess';
+import {ProfileService} from '../../../../../data_acess/src/lib/data_acess';
 import {Store} from "@ngrx/store";
-import {profileActions} from "../../data/store";
+import {profileActions} from "../../../../data/store";
+
 
 @Component({
   selector: 'app-profile-filters',
@@ -16,6 +16,7 @@ import {profileActions} from "../../data/store";
   imports: [ReactiveFormsModule],
   templateUrl: './profile-filters.component.html',
   styleUrl: './profile-filters.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfileFiltersComponent implements OnDestroy {
   fb = inject(FormBuilder);
@@ -30,6 +31,9 @@ export class ProfileFiltersComponent implements OnDestroy {
 
   searchFormSub!: Subscription;
 
+  onChange(value: any): void {
+  }
+
   constructor() {
     this.searchFormSub = this.searchForm.valueChanges
       .pipe(
@@ -37,6 +41,8 @@ export class ProfileFiltersComponent implements OnDestroy {
         debounceTime(300),)
       .subscribe(formValue => {
         this.store.dispatch(profileActions.filterEvents({filters: formValue}))
+        this.onChange({filters: formValue})
+
       });
 
   }

@@ -22,10 +22,10 @@
         placeholder="Введите пароль"
       />
 
-      <button
-        class="password-eye-btn"
-        [class.active]="isPasswordVisible()"
-        (click)="isPasswordVisible.set(!isPasswordVisible())"
+      <button type="button"
+              class="password-eye-btn"
+              [class.active]="isPasswordVisible()"
+              (click)="isPasswordVisible.set(!isPasswordVisible())"
       >
         <svg
           width="22"
@@ -46,4 +46,4 @@
   <button class="btn btn-shadow" type="submit">Войти</button>
 </form>
 
-<img src="/assets/svg/logo-big.svg" alt="logo" class="big-logo" />
+<img src="/assets/svg/logo-big.svg" alt="logo" class="big-logo"/>

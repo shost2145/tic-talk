@@ -7,4 +7,14 @@
 .messages-wrapper {
   display: grid;
   grid-gap: 12px;
+  overflow-y:scroll;
+
+}
+
+.date-separator{
+  display: grid;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  justify-content: center;
 }

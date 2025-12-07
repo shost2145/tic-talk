@@ -22,7 +22,7 @@
       "@tt/auth": ["auth/src/index.ts"],
       "@tt/chats": ["chats/src/index.ts"],
       "@tt/common-ui": ["common-ui/src/index.ts"],
-      "@tt/data_acess": ["data_acess/src/index.ts"],
+      "@tt/data_acess": ["data_acess/src/lib/data_acess/index.ts"],
       "@tt/layout": ["layout/src/index.ts"],
       "@tt/posts": ["posts/src/index.ts"],
       "@tt/profile": ["profile/src/index.ts"],

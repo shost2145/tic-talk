@@ -1,12 +1,12 @@
-import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { firstValueFrom } from 'rxjs';
-import { ProfileService } from '../../../../data_acess/src/lib/data_acess';
-import { ImgUrlPipe } from '../../../../common-ui/src';
-import { SvgIconComponent } from '../../../../common-ui/src/lib/common-ui/components/svg-icon/svg-icon.component';
-import { SubscriberCardComponent } from './subscriber-card/subscriber-card.component';
-import {ChatsService} from "../../../../data_acess/src/lib/data_acess/chats/services/chats.sertvice";
+import {AsyncPipe, NgForOf} from '@angular/common';
+import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
+import {RouterLink, RouterLinkActive} from '@angular/router';
+import {firstValueFrom} from 'rxjs';
+import {ProfileService} from '../../../../data_acess/src/lib/data_acess';
+import {ImgUrlPipe} from '../../../../common-ui/src';
+import {SvgIconComponent} from '../../../../common-ui/src/lib/common-ui/components/svg-icon/svg-icon.component';
+import {SubscriberCardComponent} from './subscriber-card/subscriber-card.component';
+import {ChatsService} from "../../../../chats/src/lib/data/chats.sertvice";
 
 @Component({
   selector: 'app-sidebar',
@@ -22,14 +22,16 @@ import {ChatsService} from "../../../../data_acess/src/lib/data_acess/chats/serv
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   profileService = inject(ProfileService);
   subcribers$ = this.profileService.getSubscribersShortList();
 
   me = this.profileService.me;
   chatsService = inject(ChatsService);
   unreadMessages = this.chatsService.unreadMessages;
+
 
   menuItems = [
     {
@@ -49,12 +51,22 @@ export class SidebarComponent {
     },
     {
       label: 'Эксперименты',
-      icon: 'search',
+      icon: 'flask',
       link: 'experiments',
     },
+
+    {
+      label: 'Домашняя работа',
+      icon: 'homework',
+      link: 'Homework'}
+
+
+
   ];
 
   ngOnInit() {
     firstValueFrom(this.profileService.getMe());
+
+
   }
 }

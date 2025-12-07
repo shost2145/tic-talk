@@ -3,7 +3,7 @@ import {
   HttpInterceptorFn,
   HttpRequest,
 } from '@angular/common/http';
-import { inject } from '@angular/core';
+import {inject} from '@angular/core';
 import {
   BehaviorSubject,
   catchError,
@@ -12,11 +12,12 @@ import {
   tap,
   throwError,
 } from 'rxjs';
-import { AuthService } from '../../../../data_acess/src/lib/data_acess/auth/services/auth.service';
+import {AuthService} from '../../../../data_acess/src/lib/data_acess';
 
 let isRefreshing$ = new BehaviorSubject<boolean>(false);
 
 export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
+  if (req.url.includes('dadata.ru')) return next(req);
   const authService = inject(AuthService);
   const token = authService.token;
 

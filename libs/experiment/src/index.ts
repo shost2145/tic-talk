@@ -1,1 +1,3 @@
-export * from './lib/experiment/experiment.component';
+import {ExperimentPageComponent} from "./lib/experiment/experiment-page.component";
+
+export {ExperimentPageComponent}

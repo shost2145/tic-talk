@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import {inject, Injectable,signal} from '@angular/core';
 import {map, Observable} from 'rxjs';
-import { Chat, LastMessageRes, Message } from '../interface/chats.interface';
-import { ProfileService } from '../../profile/services';
-import {ChatWsService} from "../../../../../../chats/src/lib/data/chat-ws-service.interface";
-import {AuthService} from "../../auth/services/auth.service";
-import {ChatWSMessage, ChatWsUnreadMessage} from "../../../../../../chats/src/lib/data/chat-ws-message.interface";
-import {isNewMessage, isUnreadMessage} from "../../../../../../chats/src/lib/data/type-guard";
-import {ChatWsRxjsService} from "../../../../../../chats/src/lib/data/chat-ws-rxjs.service";
+import { Chat, LastMessageRes, Message } from '../../../../data_acess/src/lib/data_acess';
+import { ProfileService } from '../../../../data_acess/src/lib/data_acess';
+import {ChatWsService} from "../../../../data_acess/src/lib/data_acess";
+import {AuthService} from "../../../../data_acess/src/lib/data_acess";
+import {ChatWSMessage} from "../../../../data_acess/src/lib/data_acess";
+import {isNewMessage, isUnreadMessage} from "./type-guard";
+import {ChatWsRxjsService} from "../../../../data_acess/src/lib/data_acess";
 
 
 @Injectable({
@@ -18,11 +18,11 @@ export class ChatsService {
   me = inject(ProfileService).me;
   #authService = inject(AuthService);
 
+
   wsAdapter: ChatWsService = new ChatWsRxjsService()
 
   activeChatMessages = signal<Message[]>([]);
-  unreadMessages = signal<number>(0);
-
+    unreadMessages = signal<number>(0);
 
   baseApiUrl = 'https://icherniakov.ru/yt-course/';
   chatsUrl = `${this.baseApiUrl}chat/`;
@@ -37,11 +37,7 @@ export class ChatsService {
     }) as Observable<ChatWSMessage>;
   }
 
-
-
-
   handleWSMessage = (message: ChatWSMessage)=>{
-    console.log(message);
     if (!('action' in message)) return
 
      if (isUnreadMessage(message)){

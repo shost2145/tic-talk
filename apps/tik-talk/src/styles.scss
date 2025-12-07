@@ -54,6 +54,10 @@ body {
   color: var(--dark-color);
   border-radius: 4px;
   border: 1px solid var(--dark-color);
+  transition: .2s linear;
+  &:hover{
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #3C82F8;
+}
 }
 
 .btn-icon {
@@ -64,11 +68,58 @@ body {
   color: var(--dark-color);
   border-radius: 4px;
   border: 1px solid var(--dark-color);
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
 }
+.custom-btn {
+  background: var(--primary-color);
+  border: none;
+  z-index: 1;
+}
+.custom-btn:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #663dff;
+  border-radius: 5px;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+  transition: all 0.3s ease;
+}
+.custom-btn:hover {
+  color: #fff;
+}
+.custom-btn:hover:after {
+  left: 0;
+  width: 100%;
+}
+.custom-btn:active {
+  top: 2px;
+}
+
 
 .svg16 {
   width: 16px;
   height: 16px;
+}
+
+.svg10 {
+  width: 10px;
+  height: 10px;
 }
 
 .btn-shadow {

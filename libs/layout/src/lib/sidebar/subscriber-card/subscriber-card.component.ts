@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Profile } from '../../../../../data_acess/src/lib/data_acess/profile/interface/profile.interface';
-import { ImgUrlPipe } from '../../../../../common-ui/src/lib/common-ui/pipes/img-url.pipe';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {Profile} from '../../../../../data_acess/src/lib/data_acess';
+import {ImgUrlPipe} from '../../../../../common-ui/src';
 
 @Component({
   selector: 'app-subscriber-card',
@@ -8,6 +8,7 @@ import { ImgUrlPipe } from '../../../../../common-ui/src/lib/common-ui/pipes/img
   imports: [ImgUrlPipe],
   templateUrl: './subscriber-card.component.html',
   styleUrl: './subscriber-card.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SubscriberCardComponent {
   @Input() profile!: Profile;

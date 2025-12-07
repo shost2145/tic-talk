@@ -1,12 +1,12 @@
-import { Component, inject, signal } from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '../../../../../data_acess/src/lib/data_acess/auth/services/auth.service';
+import {Router} from '@angular/router';
+import {AuthService} from '../../../../../data_acess/src/lib/data_acess';
 
 @Component({
   selector: 'app-login-page',
@@ -14,6 +14,7 @@ import { AuthService } from '../../../../../data_acess/src/lib/data_acess/auth/s
   imports: [ReactiveFormsModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginPageComponent {
   authService = inject(AuthService);

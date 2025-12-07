@@ -1,0 +1,28 @@
+
+
+
+<input class="tt-input" id="address" placeholder="введите свой адрес полностью"
+       [formControl]="innerSearchControl">
+
+
+@if (suggestions$ | async; as suggestions){
+@if (isDropdownOpened()){
+  <div class="suggestion-dropdown">
+      @for (suggest of suggestions; track suggest){
+        <button class="suggest-btn"
+                (click)="onSuggestionPick(suggest)"
+        >{{suggest.data.city}} {{suggest.data.street}} {{suggest.data.house}}</button>
+      }
+
+  </div>}}
+
+
+
+
+
+<div class="wrapper-input-form" [formGroup] = 'addressForm'>
+  <input class="tt-input"  formControlName="city" placeholder="город">
+  <input class="tt-input" formControlName="street" placeholder="улица">
+  <input class="tt-input" formControlName="building" placeholder="дом">
+
+</div>

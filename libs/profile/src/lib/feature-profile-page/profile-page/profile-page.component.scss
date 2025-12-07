@@ -41,6 +41,12 @@
     height: 36px;
     border-radius: 50%;
   }
+
+  &:hover {
+    transform: scale(1.5);
+    transition: transform 2s;
+
+  }
 }
 
 .to-subscribers-search {
@@ -68,6 +74,15 @@
   &:after {
     transform: translateY(-50%) translateX(-50%) rotate(90deg);
   }
+
+  &:hover {
+    transform: scale(1.5);
+    background: var(--primary-color);
+
+
+  }
+
+
 }
 
 .stack-wrapper {

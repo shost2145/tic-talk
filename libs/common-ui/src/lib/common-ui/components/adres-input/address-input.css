@@ -1,0 +1,38 @@
+:host {
+  position: relative;
+}
+
+.suggestion-dropdown {
+  position: absolute;
+  width:max-content;
+  background:black;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-radius: 4px;
+}
+
+.settings-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  height: max-content;
+  width: max-content;
+
+  &:hover {
+    background: var(--primary-color);
+    color: black;
+  }
+
+}
+
+.wrapper-input-form{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 8px;
+
+}
+
+

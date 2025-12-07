@@ -1,7 +1,8 @@
-import { Component, input } from '@angular/core';
-import { Profile } from '../../../../../data_acess/src/lib/data_acess';
-import { ImgUrlPipe } from '../../../../../common-ui/src';
-import { AvatarCircleComponent } from '../../../../../common-ui/src/lib/common-ui/components/avatar-circle/avatar-circle.component';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
+import {Profile} from '../../../../../data_acess/src/lib/data_acess';
+import {
+  AvatarCircleComponent
+} from '../../../../../common-ui/src';
 
 @Component({
   selector: 'app-profile-header',
@@ -9,6 +10,7 @@ import { AvatarCircleComponent } from '../../../../../common-ui/src/lib/common-u
   imports: [AvatarCircleComponent],
   templateUrl: './profile-header.component.html',
   styleUrl: './profile-header.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfileHeaderComponent {
   profile = input<Profile>();

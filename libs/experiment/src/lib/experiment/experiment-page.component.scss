@@ -3,49 +3,45 @@
   max-width: 1000px;
   align-content: center;
   justify-content: end;
+  grid-gap: 12px;
 }
 
 .wrapper-input {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 8px;
 }
 
 .wrapper-input2 {
   display: grid;
   grid-template-columns: 1fr 250px;
+  grid-gap: 8px;
 }
 
 .wrapper-input3 {
   display: grid;
   grid-template-columns: 500px 400px;
+  grid-gap: 8px;
 }
+
 .wrapper-input4 {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 8px;
 }
 
 .tt-input {
   cursor: text;
 }
 
-.tt-input.ng-invalid.ng-touched {
-  animation: borderChange 3s linear infinite;
-
-  @keyframes borderChange {
-    0%,
-    32% {
-      border-color: red;
-    }
-    33%,
-    66% {
-      border-color: rgb(0, 0, 0);
-    }
-    67%,
-    100% {
-      border-color: red;
-    }
-  }
+.tt-input::-webkit-calendar-picker-indicator { //делает более контрастным на тёмных фонах.
+  filter: invert(1);
 }
+
+.tt-input.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+
 .validation {
   display: none;
 }
@@ -73,6 +69,7 @@
 .wrapper-btn {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
 }
 
 .btn2 {
@@ -81,7 +78,43 @@
   margin-bottom: 15px;
   border: #ae7aff solid 1px;
   background: #ae7aff;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0);
+    color: #3a7999;
+    box-shadow: inset 0 0 0 3px #3a7999;
+  }
 }
+
 .option {
   color: #5f646d;
+}
+
+.grey-option {
+  color: grey !important;
+}
+
+.checkbox {
+  display: grid;
+  grid-auto-columns: auto;
+  grid-gap: 16px;
+}
+
+.suggestion-dropdown {
+  position: absolute;
+  width:max-content;
+  background:black;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-radius: 4px;
+}
+
+.suggest-btn{
+  width: 230px;
+  height: 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 20px;
+  font-family: 'JetBrains Mono', sans-serif;
 }

@@ -13,6 +13,7 @@
   background: var(--dark-color);
   padding: 32px;
   height: calc(100dvh - (24px * 4));
+  position: relative;
 }
 
 .profile-form {
@@ -24,4 +25,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
+}
+
+.indication_address {
+  position: absolute;
+  width: 90%;
+  top: 600px;
+  bottom: 120px;
 }
