@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, input} from '@angular/core';
-import {Profile} from "../../../../../../data_acess/src/lib/data_acess";
 import {
   AvatarCircleComponent
 } from "../../../../../../common-ui/src";
+import {Profile} from "../../../../../../data-access/src";
 
 
 @Component({

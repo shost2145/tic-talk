@@ -1,18 +1,7 @@
-
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  HostBinding,
-  inject,
-  input,
-  Renderer2
-} from '@angular/core';
-import { AvatarCircleComponent } from '../../../../../../../common-ui/src';
-import { Message } from '../../../../../../../data_acess/src/lib/data_acess';
+import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, inject, input, Renderer2} from "@angular/core";
+import {AvatarCircleComponent} from "../../../../../../../common-ui/src";
 import {ToMoscowTimePipe} from "../../../../../../../common-ui/src/lib/common-ui/pipes/data-pipes";
-
-
+import {Message} from "../../../../../../../data-access/src";
 
 
 @Component({

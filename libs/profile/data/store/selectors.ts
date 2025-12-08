@@ -1,6 +1,7 @@
 import {createSelector} from '@ngrx/store';
 import {proleFeature} from './reducer';
-import {Profile} from '../../../data_acess/src/lib/data_acess';
+import {Profile} from "../../../data-access/src";
+
 
 
 export const selectFilteredProfiles = createSelector(

@@ -1,4 +1,4 @@
-import { PostService } from "libs/data_acess/src/lib/data_acess/posts/services/post.service";
+import { PostService } from "libs/data-access/src/lib/posts/services/post.service";
 import { PostFeedComponent } from "./lib/feature-posts-wall/post-feed/post-feed.component";
 import { PostComponent } from "./lib/feature-posts-wall/post/post.component";
 import { CommentComponent } from "./lib/ui/comment/comment.component";

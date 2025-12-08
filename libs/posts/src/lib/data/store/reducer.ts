@@ -1,6 +1,6 @@
-import {Post, PostComment} from "../../../../../data_acess/src/lib/data_acess";
 import {createFeature, createReducer, on} from "@ngrx/store";
 import {postAction} from "./actions";
+import {Post, PostComment} from "../../../../../data-access/src";
 
 
 export interface PostState {

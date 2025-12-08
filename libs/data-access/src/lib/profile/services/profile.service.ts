@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { map, tap } from 'rxjs';
-import { Pageble } from '../../../../../../shared/src';
+import { Pageble } from '../../../../../shared/src';
 import { Profile } from '../interface';
 
 @Injectable({

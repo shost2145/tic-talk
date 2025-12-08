@@ -2,11 +2,11 @@ import {AsyncPipe, NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {firstValueFrom} from 'rxjs';
-import {ProfileService} from '../../../../data_acess/src/lib/data_acess';
 import {ImgUrlPipe} from '../../../../common-ui/src';
 import {SvgIconComponent} from '../../../../common-ui/src/lib/common-ui/components/svg-icon/svg-icon.component';
 import {SubscriberCardComponent} from './subscriber-card/subscriber-card.component';
 import {ChatsService} from "../../../../chats/src/lib/data/chats.sertvice";
+import {ProfileService} from "../../../../data-access/src";
 
 @Component({
   selector: 'app-sidebar',

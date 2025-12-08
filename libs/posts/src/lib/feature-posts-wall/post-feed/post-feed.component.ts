@@ -7,12 +7,12 @@ import {
   Renderer2,
 } from '@angular/core';
 import {debounceTime, fromEvent} from 'rxjs';
-import {PostService} from '../../../../../data_acess/src/lib/data_acess/posts/services/post.service';
 import {PostInputComponent} from '../../ui/post-input/post-input.component';
 import {PostComponent} from '../post/post.component';
 import {Store} from "@ngrx/store";
-import {ProfileService} from "../../../../../data_acess/src/lib/data_acess";
 import {postAction, selectPosts} from "../../data/store";
+import {PostService} from "../../../../../data-access/src/lib/posts/services/post.service";
+import {ProfileService} from "../../../../../data-access/src";
 
 
 

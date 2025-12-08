@@ -2,10 +2,10 @@ import {ChangeDetectionStrategy, Component, effect, inject, ViewChild} from '@an
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {firstValueFrom} from 'rxjs';
 import {ProfileHeaderComponent} from '../ui';
-import {ProfileService} from '../../../../data_acess/src/lib/data_acess';
 import {AvatarUploadComponent} from '../ui';
 import {StackInput} from "../../../../common-ui/src/lib/common-ui/components/stack-input/stack-input";
 import {AddressInput} from "../../../../common-ui/src/lib/common-ui/components/adres-input/address-input";
+import {ProfileService} from "../../../../data-access/src";
 
 @Component({
   selector: 'app-settings-page',

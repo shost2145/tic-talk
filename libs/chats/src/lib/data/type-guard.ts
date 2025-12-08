@@ -1,5 +1,4 @@
-import {ChatWSNewMessage, ChatWsUnreadMessage} from "libs/data_acess/src/lib/data_acess";
-import {ChatWSMessage} from "../../../../data_acess/src/lib/data_acess";
+import {ChatWSMessage, ChatWSNewMessage, ChatWsUnreadMessage} from "../../../../data-access/src";
 
 
 export function isUnreadMessage(message: ChatWSMessage): message is ChatWsUnreadMessage {

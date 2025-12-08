@@ -14,9 +14,9 @@ import {
   AvatarCircleComponent
 } from '../../../../../common-ui/src';
 import {SvgIconComponent} from '../../../../../common-ui/src/lib/common-ui/components/svg-icon/svg-icon.component';
-import {PostService} from '../../../../../data_acess/src/lib/data_acess/posts/services/post.service';
-import {ProfileService} from '../../../../../data_acess/src/lib/data_acess';
 import {Store} from "@ngrx/store";
+import {PostService} from "../../../../../data-access/src/lib/posts/services/post.service";
+import {ProfileService} from "../../../../../data-access/src";
 
 
 @Component({

@@ -1,6 +1,7 @@
 import {createFeature, createReducer, on} from '@ngrx/store';
 import {profileActions} from './actions';
-import {Profile} from '../../../data_acess/src/lib/data_acess';
+import {Profile} from "../../../data-access/src";
+
 
 
 export interface ProfileState {

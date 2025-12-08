@@ -6,9 +6,9 @@ import {firstValueFrom, switchMap} from 'rxjs';
 import {ProfileHeaderComponent} from '../../ui';
 import {SvgIconComponent} from '../../../../../common-ui/src/lib/common-ui/components/svg-icon/svg-icon.component';
 import {ChatsService} from '../../../../../chats/src/lib/data/chats.sertvice';
-import {ProfileService} from '../../../../../data_acess/src/lib/data_acess';
 import {ImgUrlPipe} from '../../../../../common-ui/src';
 import {PostFeedComponent} from '../../../../../posts/src';
+import {ProfileService} from "../../../../../data-access/src";
 
 @Component({
   selector: 'app-profile-page',

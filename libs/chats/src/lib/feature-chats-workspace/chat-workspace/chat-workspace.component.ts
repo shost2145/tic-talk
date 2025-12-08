@@ -3,11 +3,12 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {switchMap} from 'rxjs';
 import {ChatsService} from '../../data/chats.sertvice';
-import {ProfileService} from '../../../../../data_acess/src/lib/data_acess';
+
 import {
   ChatWorkspaceMessagesWrapperComponent
 } from './chat-workspace-messages-wrapper/chat-workspace-messages-wrapper.component';
 import {ChatWorkspaceHeaderComponent} from "./chat-workspace-header/chat-workspace-header.component";
+import {ProfileService} from "../../../../../data-access/src";
 
 @Component({
   selector: 'app-chat-workspace',

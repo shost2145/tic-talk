@@ -7,11 +7,11 @@ import {
   Renderer2,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {ProfileService} from '../../../../../data_acess/src/lib/data_acess';
 import {
   AvatarCircleComponent
 } from '../../../../../common-ui/src';
 import {SvgIconComponent} from '../../../../../common-ui/src/lib/common-ui/components/svg-icon/svg-icon.component';
+import {ProfileService} from "../../../../../data-access/src";
 
 @Component({
   selector: 'app-message-input',

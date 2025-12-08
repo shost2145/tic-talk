@@ -3,7 +3,8 @@ import {Component, input} from '@angular/core';
 import {
   AvatarCircleComponent
 } from '../../../../../common-ui/src';
-import {PostComment} from '../../../../../data_acess/src/lib/data_acess/posts/interface/post.interface';
+import {PostComment} from "../../../../../data-access/src";
+
 
 @Component({
   selector: 'app-comment',

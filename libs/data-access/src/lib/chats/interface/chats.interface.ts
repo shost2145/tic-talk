@@ -1,13 +1,5 @@
 import { Profile } from '../../profile/interface';
 
-export interface Chat {
-  id: number;
-  userFirst: Profile;
-  userSecond: Profile;
-  messages: Message[];
-  companion?: Profile;
-}
-
 export interface Message {
   id: number;
   userFromId: number;
@@ -19,6 +11,17 @@ export interface Message {
   user?: Profile;
   isMine?: boolean | undefined;
 }
+
+export interface Chat {
+  id: number;
+  userFirst: Profile;
+  userSecond: Profile;
+  messages: Message[];
+  companion?: Profile;
+}
+
+
+
 
 export interface LastMessageRes {
   id: number;

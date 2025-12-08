@@ -5,9 +5,9 @@ import {
   startWith,
   Subscription,
 } from 'rxjs';
-import {ProfileService} from '../../../../../data_acess/src/lib/data_acess';
 import {Store} from "@ngrx/store";
 import {profileActions} from "../../../../data/store";
+import {ProfileService} from "../../../../../data-access/src";
 
 
 @Component({

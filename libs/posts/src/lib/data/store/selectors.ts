@@ -1,7 +1,8 @@
 
 import {createSelector} from "@ngrx/store";
 import {postFeature} from "./reducer";
-import {Post} from "../../../../../data_acess/src/lib/data_acess";
+import {Post} from "../../../../../data-access/src";
+
 
 export const selectPosts = createSelector(
   postFeature.selectPosts,

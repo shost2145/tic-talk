@@ -2,7 +2,8 @@ import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {
   AvatarCircleComponent
 } from '../../../../../common-ui/src';
-import {LastMessageRes} from '../../../../../data_acess/src/lib/data_acess';
+import {LastMessageRes} from "../../../../../data-access/src";
+
 
 @Component({
   selector: 'button[chats]',

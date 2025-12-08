@@ -1,17 +1,10 @@
-import {ChangeDetectionStrategy, Component, ElementRef, HostListener, inject, input, Renderer2, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, HostListener, inject, input, Renderer2} from '@angular/core';
 import {debounceTime, firstValueFrom, fromEvent} from 'rxjs';
 import { MessageInputComponent } from '../../../ui/message-input/message-input.component';
-import {
-  Chat, Message,
-} from '../../../../../../data_acess/src/lib/data_acess';
-import { ChatsService } from '../../../data/chats.sertvice';
-import { ChatWorkspaceMessageComponent } from './chat-workspace-message/chat-workspace-message.component';
+import {ChatsService} from "../../../data/chats.sertvice";
 import {KeyValuePipe} from "@angular/common";
-
-
-
-
-
+import {ChatWorkspaceMessageComponent} from "./chat-workspace-message/chat-workspace-message.component";
+import {Chat, Message} from "../../../../../../data-access/src";
 @Component({
   selector: 'app-chat-workspace-messages-wrapper',
   standalone: true,

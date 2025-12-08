@@ -1,9 +1,9 @@
 import {Component, forwardRef, inject, OnInit, signal} from '@angular/core';
 import {ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ReactiveFormsModule} from "@angular/forms";
-import {DadataService} from "../../../../../../data_acess/src/lib/data_acess";
 import {debounceTime, switchMap, tap} from "rxjs";
 import {AsyncPipe} from "@angular/common";
-import {DadataSuggestion} from "../../../../../../data_acess/src/lib/data_acess";
+import {DadataService, DadataSuggestion} from "../../../../../../data-access/src";
+
 
 
 @Component({

@@ -5,9 +5,9 @@ import {AsyncPipe, NgForOf} from '@angular/common';
 import {phoneOptions} from '../mask'
 import {MaskitoDirective} from "@maskito/angular";
 import flatpickr from "flatpickr";
-import {DadataService} from "../../../../data_acess/src/lib/data_acess";
 import {debounceTime, from, map, switchMap, tap} from "rxjs";
-import {DadataSuggestion} from "../../../../data_acess/src/lib/data_acess";
+import {DadataService, DadataSuggestion} from "../../../../data-access/src";
+
 
 
 enum ReceiverTypes {
@@ -82,6 +82,8 @@ export class ExperimentPageComponent implements AfterViewInit {
   onSuggestionPick(suggest: DadataSuggestion, addressIndex: number) {
     this.isDropdownOpened.set(false);
     const addressFormGroup = (this.form.controls.addresses as FormArray).at(addressIndex) as FormGroup;
+    addressFormGroup.get('city')?.setValue(suggest.data.city);   // всегда открывается, нужно подумать как исправить.
+
 
     addressFormGroup.patchValue({
       city: suggest.data.city,

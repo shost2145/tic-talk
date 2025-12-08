@@ -2,9 +2,9 @@ import {inject, Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {profileActions} from './actions';
 import {map, switchMap, withLatestFrom} from 'rxjs';
-import {ProfileService} from "../../../data_acess/src/lib/data_acess";
 import {Store} from "@ngrx/store";
 import {selectProfileFilters, selectProfilePage} from "./selectors";
+import {ProfileService} from "../../../data-access/src";
 
 @Injectable({
     providedIn: 'root',

@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import {inject, Injectable,signal} from '@angular/core';
 import {map, Observable} from 'rxjs';
-import { Chat, LastMessageRes, Message } from '../../../../data_acess/src/lib/data_acess';
-import { ProfileService } from '../../../../data_acess/src/lib/data_acess';
-import {ChatWsService} from "../../../../data_acess/src/lib/data_acess";
-import {AuthService} from "../../../../data_acess/src/lib/data_acess";
-import {ChatWSMessage} from "../../../../data_acess/src/lib/data_acess";
+import {
+  AuthService, Chat,
+  ChatWSMessage,
+  ChatWsRxjsService,
+  ChatWsService, LastMessageRes,
+  ProfileService, Message
+} from "../../../../data-access/src";
 import {isNewMessage, isUnreadMessage} from "./type-guard";
-import {ChatWsRxjsService} from "../../../../data_acess/src/lib/data_acess";
+
 
 
 @Injectable({
